@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D Cube Resume</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #0f172a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        overflow: hidden;
+    }
+
+    .scene {
+        width: 300px;
+        height: 300px;
+        perspective: 1000px;
+    }
+
+    .cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(-20deg) rotateY(20deg);
+        transition: transform 1s;
+    }
+
+    .face {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(30, 41, 59, 0.9);
+        border: 2px solid #00f7ff;
+        box-shadow: 0 0 15px #00f7ff, inset 0 0 10px #00f7ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .face h2 {
+        margin-bottom: 10px;
+        color: #38bdf8;
+    }
+
+    /* Position faces */
+    .front  { transform: rotateY(0deg) translateZ(150px); }
+    .back   { transform: rotateY(180deg) translateZ(150px); }
+    .right  { transform: rotateY(90deg) translateZ(150px); }
+    .left   { transform: rotateY(-90deg) translateZ(150px); }
+    .top    { transform: rotateX(90deg) translateZ(150px); }
+    .bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+    /* Controls */
+    .controls {
+        position: absolute;
+        bottom: 20px;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        background: #00f7ff;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background: #38bdf8;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+    <div class="cube" id="cube">
+        
+        <div class="face front">
+            <h2>Introduction</h2>
+            <p>I am a Frontend Developer</p>
+            <p>Name: XXXX</p>
+            <p>Phone: YYYY</p>
+        </div>
+
+        <div class="face back">
+            <h2>Work</h2>
+            <p>Company: Your Company</p>
+            <p>Role: Frontend Developer</p>
+            <p>Experience: 2+ years</p>
+        </div>
+
+        <div class="face right">
+            <h2>Projects</h2>
+            <p>Portfolio Website</p>
+            <p>E-commerce UI</p>
+            <p>Dashboard App</p>
+        </div>
+
+        <div class="face left">
+            <h2>Certificates</h2>
+            <p>Frontend Certification</p>
+            <p>JavaScript Advanced</p>
+        </div>
+
+        <div class="face top">
+            <h2>Education</h2>
+            <p>B.Tech in Computer Science</p>
+            <p>Your University</p>
+        </div>
+
+        <div class="face bottom">
+            <h2>Hobby</h2>
+            <p>Coding</p>
+            <p>Gaming</p>
+            <p>Designing UI</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="rotateCube('front')">Intro</button>
+    <button onclick="rotateCube('back')">Work</button>
+    <button onclick="rotateCube('right')">Projects</button>
+    <button onclick="rotateCube('left')">Certificates</button>
+    <button onclick="rotateCube('top')">Education</button>
+    <button onclick="rotateCube('bottom')">Hobby</button>
+</div>
+
+<script>
+function rotateCube(face) {
+    const cube = document.getElementById('cube');
+    switch(face) {
+        case 'front':
+            cube.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            break;
+        case 'back':
+            cube.style.transform = 'rotateX(0deg) rotateY(180deg)';
+            break;
+        case 'right':
+            cube.style.transform = 'rotateX(0deg) rotateY(-90deg)';
+            break;
+        case 'left':
+            cube.style.transform = 'rotateX(0deg) rotateY(90deg)';
+            break;
+        case 'top':
+            cube.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+            break;
+        case 'bottom':
+            cube.style.transform = 'rotateX(90deg) rotateY(0deg)';
+            break;
+    }
+}
+</script>
+
+</body>
+</html>
